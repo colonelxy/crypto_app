@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Routes, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space } from 'antd';
 
 import { Navbar, Exchanges, Homepage, Cryptocurrencies, News, CryptoDetails } from "./components";
@@ -28,15 +28,15 @@ const App = () => {
                         <Route path="/crypto/:coinId">
                             <CryptoDetails />
                         </Route>
-                        <Route path="/news"> element={
-                            <News />}
+                        <Route path="/news">
+                            <News />
                         </Route>
-                        <Route path="*" element={
+                        <Route path="*" >
                             <div>
                                 <h2>404 Page not found, back to homepage?</h2>
                             </div>
-                            }
-                        />
+                            
+                        </Route>
                     </Routes>
 
                 </div>
