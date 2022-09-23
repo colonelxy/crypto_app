@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Switch, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space } from 'antd';
 
 import { Navbar, Exchanges, Homepage, Cryptocurrencies, News, CryptoDetails } from "./components";
@@ -15,7 +15,7 @@ const App = () => {
         <div className='main' >
             <Layout>
                 <div className='routes' >
-                    <Routes>
+                    <Switch>
                         <Route path="/">
                             <Homepage />
                         </Route>
@@ -31,23 +31,26 @@ const App = () => {
                         <Route path="/news">
                             <News />
                         </Route>
-                        <Route path="*" >
-                            <div>
-                                <h2>404 Page not found, back to homepage?</h2>
-                            </div>
-                            
-                        </Route>
-                    </Routes>
+                    </Switch>
 
                 </div>
 
             </Layout>
+            <div className='footer' >
+                <Typography.Title level={5} style={{color: 'white', textAlign: 'center'}}>
+                    Cryptoverse <br />
+                    All rights reserved
+                </Typography.Title>
+                <Space>
+                    <Link to="/" >Home</Link>
+                    <Link to="exchanges" >Exchanges</Link>
+                    <Link to="news" >News</Link>
+                </Space>
 
         </div>
-        <div className='footer' >
-           
 
         </div>
+        
     </div>
   )
 }

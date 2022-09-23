@@ -3,4 +3,6 @@
 ## Tools
 - React
 - Redux
+- Ant design
+- Chartjs
 - RapidAPI
