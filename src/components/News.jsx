@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
 
-import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { useGetCryptosQuery } from '../services/cryptoApi';
-// import Loader from './Loader';
+import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
+import Loader from './Loader';
 
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
@@ -16,7 +16,7 @@ const News = ({ simplified }) => {
   const { data } = useGetCryptosQuery(100);
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
 
-  // if (!cryptoNews?.value) return <Loader />;
+  if (!cryptoNews?.value) return <Loader />;
 
   return (
     <Row gutter={[24, 24]}>
@@ -26,9 +26,9 @@ const News = ({ simplified }) => {
             showSearch
             className="select-news"
             placeholder="Select a Crypto"
-            optionFilterProp="children"
+            optionFilterProp="items"
             onChange={(value) => setNewsCategory(value)}
-            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+            filterOption={(input, option) => option.items.toLowerCase().indexOf(input.toLowerCase()) >= 0}
           >
             <Option value="Cryptocurency">Cryptocurrency</Option>
             {data?.data?.coins?.map((currency) => <Option value={currency.name}>{currency.name}</Option>)}
